@@ -13,7 +13,8 @@ class Discord_Handler(Handler):
         return record.__dict__
 
     def emit(self, record):
-        asyncio.create_task(self.emitting(record))
+        asyncio.get_event_loop()
+        asyncio.ensure_future(self.emitting(record))
 
     async def emitting(self, record):
         try:
